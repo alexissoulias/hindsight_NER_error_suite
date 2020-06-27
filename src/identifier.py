@@ -75,24 +75,64 @@ class Error_Identifier:
 	----------
 	1.
 	"""
+	#
 	def __init__(self, nlp, golden_annotation, article_text):
 		"""
 		"""
 		self.doc = nlp(article_text)
-		self.golden_annotation = golden_annotation
-
-	def is_Frag(ent):
+		self.found_truth_map = golden_annotation
+		ent_text = []
+		for ent in self.doc.ents:
+			ent_text.append(ent.text)
+		self.index_of_ents = [token.i for token in doc if token.text in ent_text]
+	# Kaelan
+	def is_Frag(self):
 		for gold_entity in self.golden_annotation:
 			if ent.text in gold_entity:
 				if len(ent.text) < len(gold_entity):
 					return (True, gold_entity)
-		return (False, None)
+		return
 
-	def sos_frag(index,  gold_entity):
+	# KN
+	def is_sos_frag(self):
+		return
+
+	def is_num_frag(self):
+		return
+
+	def is_title_colon_frag(self):
+		return
+
+	def is_title_prefix_frag(self):
+		return
+
+	# Sebastian
+	def concat(self):
+		return
+	# Ivy
+	def noun_ent_concat(self):
+		return
+
+	#Sophia
+	def company_product_concat(self):
+		return
+
+	#Sebastian
+	def conj_adv_concat(self):
+		return
+
+	# Ivy
+	def interior_ent_concat(self):
+		return
+
+	# Sophia
+	def contractional_concat(self):
+		return
+
+	# Alexis
+	def noun_ent_ambig(self):
 		return
 
 	def main(self):
-		ent_text = []
-		for ent in doc.ents:
-			ent_text.append(ent.text)
-		ent_indexes = [token.i for token in doc if token.text in ent_text]
+		return
+
