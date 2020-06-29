@@ -81,18 +81,11 @@ class Error_Identifier:
 		"""
 		self.doc = nlp(article_text)
 		self.found_truth_map = golden_annotation
-		ent_text = []
-		for ent in self.doc.ents:
-			ent_text.append(ent.text)
-		self.index_of_ents = [token.i for token in doc if token.text in ent_text]
+		self.index_of_ents = [ent.start for ent in self.doc.ents]
 	# Kaelan
 	def is_Frag(self):
-		for gold_entity in self.golden_annotation:
-			if ent.text in gold_entity:
-				if len(ent.text) < len(gold_entity):
-					return (True, gold_entity)
-		return
 
+		return
 	# KN
 	def is_sos_frag(self):
 		return
